@@ -11,7 +11,16 @@
 			"default": "./dist/index.js"
 		}
 	},
-	"keywords": [],
+	"files": ["dist"],
+	"keywords": [
+		"vite",
+		"plugin",
+		"doctest",
+		"documentation",
+		"test",
+		"testing",
+		"vitest"
+	],
 	"scripts": {
 		"build": "tsup src/index.ts --format cjs --dts"
 	},
