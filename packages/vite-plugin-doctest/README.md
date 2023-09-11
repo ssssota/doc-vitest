@@ -50,6 +50,9 @@ type Options = {}
 
 This plugin will transform your documentation tests.
 
+This transformation occurs only when you start Vitest.
+So, you don't need to worry about the performance of your production code.
+
 ```ts
 /**
  * @import.meta.vitest
