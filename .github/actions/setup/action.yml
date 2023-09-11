@@ -1,0 +1,16 @@
+name: Setup environment
+description: Setup environment for the project
+
+inputs:
+  node-version:
+    description: Node.js version
+    default: latest
+
+runs:
+  steps:
+    - uses: pnpm/action-setup@v2
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'pnpm'
+    - run: pnpm install
