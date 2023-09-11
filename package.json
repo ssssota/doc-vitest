@@ -1,5 +1,5 @@
 {
-	"packageManager": "pnpm@8.7.4",
+	"packageManager": "pnpm@8.7.5",
 	"scripts": {
 		"test": "pnpm -r test",
 		"fmt": "biome format --write . && biome check --apply .",
