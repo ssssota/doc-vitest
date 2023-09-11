@@ -1,0 +1,11 @@
+{
+	"name": "test",
+	"private": true,
+	"scripts": {
+		"test": "vitest"
+	},
+	"devDependencies": {
+		"vite-plugin-doctest": "workspace:*",
+		"vitest": ">=0.34.0"
+	}
+}

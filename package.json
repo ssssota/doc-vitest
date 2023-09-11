@@ -1,0 +1,30 @@
+{
+	"packageManager": "pnpm@8.7.4",
+	"scripts": {
+		"test": "pnpm -r test",
+		"fmt": "biome format --write . && biome check --apply .",
+		"lint": "biome check .",
+		"build": "pnpm -r run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ssssota/doc-vitest.git"
+	},
+	"author": "TOMIKAWA Sotaro <tommysouta@gmail.com>",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ssssota/doc-vitest/issues"
+	},
+	"homepage": "https://github.com/ssssota/doc-vitest#readme",
+	"devDependencies": {
+		"@biomejs/biome": "^1.1.2"
+	},
+	"name": "doc-vitest",
+	"version": "1.0.0",
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"keywords": [],
+	"description": ""
+}

@@ -1,0 +1,40 @@
+{
+	"name": "vite-plugin-doctest",
+	"version": "1.0.0",
+	"description": "Vite plugin for documentation testing powered with vitest",
+	"type": "commonjs",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"keywords": [],
+	"scripts": {
+		"build": "tsup src/index.ts --format cjs --dts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ssssota/doc-vitest.git"
+	},
+	"author": "TOMIKAWA Sotaro <tommysouta@gmail.com>",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ssssota/doc-vitest/issues"
+	},
+	"homepage": "https://github.com/ssssota/doc-vitest#readme",
+	"devDependencies": {
+		"@types/micromatch": "^4.0.2",
+		"tsup": "^7.2.0",
+		"vite": "^4.4.9",
+		"vitest": ">=0.34.0"
+	},
+	"dependencies": {
+		"@babel/parser": "^7.22.16",
+		"magic-string": "^0.30.3",
+		"micromatch": "^4.0.5",
+		"typescript": "^4.0.0 || ^5.0.0"
+	}
+}
