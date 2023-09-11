@@ -3,8 +3,8 @@
 	"version": "0.1.0",
 	"description": "Vite plugin for documentation testing powered with vitest",
 	"type": "commonjs",
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
