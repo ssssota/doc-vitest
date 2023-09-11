@@ -1,6 +1,5 @@
 import { parse } from "@babel/parser";
 import MagicString from "magic-string";
-import typescript from "typescript";
 import type { Plugin } from "vite";
 
 const vitestExports = [
@@ -47,16 +46,6 @@ export const doctest = (_options: Options = {}): Plugin => {
 				.filter((c) => c.type === "CommentBlock" && c.value.startsWith("*"))
 				.flatMap((c) => extractTestComment(c.value))
 				.flatMap(extractCode);
-
-			// const node = typescript.createSourceFile(
-			// 	id,
-			// 	code,
-			// 	typescript.ScriptTarget.ESNext,
-			// );
-			// const jsDocs = findJSDoc(node);
-			// const tests = jsDocs
-			// 	.flatMap(extractTestComment)
-			// 	.flatMap(extractCode);
 			if (tests.length === 0) return code;
 
 			const s = new MagicString(code);
@@ -65,8 +54,9 @@ export const doctest = (_options: Options = {}): Plugin => {
 					"\nif (import.meta.vitest) {",
 					`const {${vitestExports.join(",")}} = import.meta.vitest;`,
 					...tests.flatMap(({ code, name }, i) => {
+						const testName = JSON.stringify(name || `${id}#${i}`);
 						return [
-							`test(${JSON.stringify(name || `${id}#${i}`)}, async () => {`,
+							`import.meta.vitest.test(${testName}, async () => {`,
 							code,
 							"});",
 						];
@@ -74,7 +64,6 @@ export const doctest = (_options: Options = {}): Plugin => {
 					"}",
 				].join("\n"),
 			);
-			console.log(s.toString());
 
 			return {
 				code: s.toString(),
@@ -86,43 +75,12 @@ export const doctest = (_options: Options = {}): Plugin => {
 
 export default doctest;
 
-function findJSDoc(node: typescript.Node): typescript.JSDoc[] {
-	const nodes: typescript.JSDoc[] = [];
-	// HACK: typescript.Node has no jsDoc property
-	if ("jsDoc" in node && Array.isArray(node.jsDoc) && node.jsDoc.length > 0) {
-		nodes.push(
-			...node.jsDoc.flatMap((doc) => (typescript.isJSDoc(doc) ? [doc] : [])),
-		);
-	}
-	node.forEachChild((child) => nodes.push(...findJSDoc(child)));
-	return nodes;
-}
-
-function extractTestComment(jsDoc: typescript.JSDoc | string): string[] {
-	if (typeof jsDoc === "string") {
-		const testTagMatcher = /^import\.meta\.vitest\b/;
-		if (!jsDoc.startsWith("*")) return [];
-		const tags = jsDoc.replace(/^[ \t]*\*[ \t]*/gm, "").split(/\n@/g).slice(1);
-		const testTags = tags.filter((tag) => tag.match(testTagMatcher));
-		return testTags.map((tagComment) => tagComment.replace(testTagMatcher, ""));
-	}
-	return (
-		jsDoc.tags?.flatMap((tag) => {
-			if (tag.comment == null) return [];
-			const commentText =
-				typeof tag.comment === "string"
-					? tag.comment
-					: tag.comment.map((c) => c.text).join("\n");
-			// tagName should be `import.meta.vitest`. But it splits into `import` and `.meta.vitest`.
-			if (
-				tag.tagName.text === "import" &&
-				commentText.startsWith(".meta.vitest")
-			) {
-				return [commentText];
-			}
-			return [];
-		}) ?? []
-	);
+function extractTestComment(jsDoc: string): string[] {
+	const testTagMatcher = /^import\.meta\.vitest\b/;
+	if (!jsDoc.startsWith("*")) return [];
+	const tags = jsDoc.replace(/^[ \t]*\*[ \t]*/gm, "").split(/\n@/g).slice(1);
+	const testTags = tags.filter((tag) => tag.match(testTagMatcher));
+	return testTags.map((tagComment) => tagComment.replace(testTagMatcher, ""));
 }
 
 type TestCode = {

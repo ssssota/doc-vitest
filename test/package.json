@@ -2,7 +2,8 @@
 	"name": "test",
 	"private": true,
 	"scripts": {
-		"test": "vitest"
+		"test": "vitest run",
+		"vitest": "vitest watch"
 	},
 	"devDependencies": {
 		"vite-plugin-doctest": "workspace:*",
