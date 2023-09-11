@@ -10,6 +10,7 @@ You can write test in your source code with documentation.
  * @import.meta.vitest
  * ```ts
  * expect(add(1, 2)).toBe(3);
+ * assert(add(3, 4) === 7);
  * ```
  */
 export function add(a: number, b: number) {
@@ -44,3 +45,58 @@ Currently, there is no option.
 ```ts
 type Options = {}
 ```
+
+## How it works
+
+This plugin will transform your documentation tests.
+
+```ts
+/**
+ * @import.meta.vitest
+ * ```ts
+ * expect(add(1, 2)).toBe(3);
+ * ```
+ */
+export function add(a: number, b: number) {
+  return a + b;
+}
+```
+
+↓
+
+```ts
+/**
+ * @import.meta.vitest
+ * ```ts:1+2=3
+ * expect(add(1, 2)).toBe(3);
+ * ```
+ */
+export function add(a: number, b: number) {
+  return a + b;
+}
+
+if (import.meta.vitest) {
+const {assert,chai,createExpect,expect,getRunningMode,isWatchMode,should,vi,vitest} = import.meta.vitest;
+import.meta.vitest.test("1+2=3", async () => {
+expect(add(1, 2)).toBe(3);
+});
+}
+```
+
+### Constraints
+
+This plugin has some constraints.
+
+- You cannot use typechecks. (e.g. `expectTypeOf`, `assertType`, etc...)
+- You cannot use lifecycle hooks. (e.g. `beforeEach`, `afterAll`, etc...)
+- Currently you cannot use `import` statement in your test code. (You can use dynamic import)
+- and more... (Please make an issue if you find it)
+
+## Related
+
+- [Vitest](https://vitest.dev)
+- [power-doctest](https://github.com/azu/power-doctest)
+
+## License
+
+MIT License

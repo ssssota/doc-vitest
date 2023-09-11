@@ -1,1 +1,1 @@
-# doc-vitest
+./packages/vite-plugin-doctest/README.md
