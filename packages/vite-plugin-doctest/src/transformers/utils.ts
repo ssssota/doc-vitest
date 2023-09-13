@@ -49,3 +49,23 @@ export function extractCode(md: string): TestCode[] {
 		return { name, code };
 	});
 }
+
+export function buildTestBlock(
+	id: string,
+	tests: (TestCode | undefined)[],
+): string {
+	return [
+		"\nif (import.meta.vitest) {",
+		`const {${vitestExports.join(",")}} = import.meta.vitest;`,
+		...tests.flatMap((test, i) => {
+			if (!test) return [];
+			const testName = JSON.stringify(test.name || `${id}#${i}`);
+			return [
+				`import.meta.vitest.test(${testName}, async () => {`,
+				test.code,
+				"});",
+			];
+		}),
+		"}",
+	].join("\n");
+}
