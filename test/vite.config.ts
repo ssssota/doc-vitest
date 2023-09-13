@@ -4,6 +4,6 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
 	plugins: [doctest()],
 	test: {
-		includeSource: ["./src/**/*.ts"],
+		includeSource: ["./src/**/*.[jt]s", "./src/**/*.md"],
 	},
 });
