@@ -1,6 +1,6 @@
 {
 	"name": "vite-plugin-doctest",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Vite plugin for documentation testing powered with vitest",
 	"type": "commonjs",
 	"main": "dist/index.js",
@@ -11,7 +11,9 @@
 			"default": "./dist/index.js"
 		}
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"keywords": [
 		"vite",
 		"plugin",
