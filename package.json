@@ -4,7 +4,9 @@
 		"test": "pnpm -r test",
 		"fmt": "biome format --write . && biome check --apply .",
 		"lint": "biome check .",
-		"build": "pnpm -r run build"
+		"build": "pnpm -r run build",
+		"changeset": "changeset",
+		"release": "pnpm build && changeset release"
 	},
 	"repository": {
 		"type": "git",
