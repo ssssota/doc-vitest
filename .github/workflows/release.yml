@@ -14,8 +14,8 @@ jobs:
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/setup-node
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
       - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@v1
         with:
