@@ -42,7 +42,7 @@ import { defineConfig } from 'vitest/config'; // or `import { defineConfig } fro
 import { doctest } from 'vite-plugin-doctest';
 export default defineConfig({
   plugins: [doctest({ /* options */ })],
-  test: { includeSource: ['./src/**/*.[jt]s?(x)'] },
+  test: { includeSource: ['./src/**/*.[jt]s?(x)', './**/*.md'] },
 });
 ```
 
