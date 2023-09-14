@@ -18,6 +18,18 @@ export function add(a: number, b: number) {
 }
 ```
 
+You can also test code in markdown.
+
+````markdown
+# Test
+
+<!-- @import.meta.vitest -->
+```ts
+const { add } = await import('./add');
+expect(add(1, 2)).toBe(3);
+```
+````
+
 ## Setup
 
 ```sh

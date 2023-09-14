@@ -1,5 +1,5 @@
 import type { Plugin } from "vite";
-import { typescript } from "./transformers";
+import { markdown, typescript } from "./transformers";
 
 type Options = {};
 export const doctest = (_options: Options = {}): Plugin => {
@@ -9,6 +9,7 @@ export const doctest = (_options: Options = {}): Plugin => {
 		transform(code, id) {
 			if (process.env.VITEST !== "true") return code;
 			if (id.match(/\.[cm]?[jt]sx?$/)) return typescript(code, id);
+			if (id.match(/\.md$/)) return markdown(code, id);
 		},
 	};
 };
