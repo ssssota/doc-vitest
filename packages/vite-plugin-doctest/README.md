@@ -18,6 +18,8 @@ export function add(a: number, b: number) {
 }
 ```
 
+You can also test code in markdown.
+
 ````markdown
 # Test
 
