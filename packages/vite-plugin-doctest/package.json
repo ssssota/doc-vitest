@@ -11,9 +11,7 @@
 			"default": "./dist/index.js"
 		}
 	},
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"keywords": [
 		"vite",
 		"plugin",
@@ -36,14 +34,16 @@
 		"url": "https://github.com/ssssota/doc-vitest/issues"
 	},
 	"homepage": "https://github.com/ssssota/doc-vitest#readme",
+	"peerDependencies": {
+		"vitest": ">=0.29.0"
+	},
 	"devDependencies": {
-		"@types/micromatch": "^4.0.2",
 		"remark-parse": "^10.0.2",
 		"tsup": "^7.2.0",
 		"typescript": "^5.2.2",
 		"unified": "^10.1.2",
 		"vite": "^4.4.9",
-		"vitest": ">=0.34.0"
+		"vitest": "^0.34.0"
 	},
 	"dependencies": {
 		"@babel/parser": "^7.22.16",
