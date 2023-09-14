@@ -17,7 +17,9 @@
 	},
 	"homepage": "https://github.com/ssssota/doc-vitest#readme",
 	"devDependencies": {
-		"@biomejs/biome": "^1.1.2"
+		"@biomejs/biome": "^1.1.2",
+		"@changesets/changelog-github": "^0.4.8",
+		"@changesets/cli": "^2.26.2"
 	},
 	"name": "doc-vitest",
 	"version": "1.0.0",
