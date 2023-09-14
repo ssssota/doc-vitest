@@ -6,7 +6,7 @@
 		"lint": "biome check .",
 		"build": "pnpm -r run build",
 		"changeset": "changeset",
-		"release": "pnpm build && changeset release"
+		"release": "pnpm build && changeset publish"
 	},
 	"repository": {
 		"type": "git",
