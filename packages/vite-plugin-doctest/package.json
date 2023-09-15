@@ -22,7 +22,8 @@
 		"vitest"
 	],
 	"scripts": {
-		"build": "tsup src/index.ts --format cjs --dts"
+		"build": "tsup src/index.ts --format cjs --dts",
+		"check": "tsc --noEmit"
 	},
 	"repository": {
 		"type": "git",

@@ -2,8 +2,9 @@
 	"packageManager": "pnpm@8.7.5",
 	"scripts": {
 		"test": "pnpm -r test",
-		"fmt": "biome format --write . && biome check --apply .",
-		"lint": "biome check .",
+		"fmt": "biome format --write . && biome lint --apply .",
+		"lint": "biome lint .",
+		"check": "pnpm -r run check && biome ci .",
 		"build": "pnpm -r run build",
 		"changeset": "changeset",
 		"release": "pnpm build && changeset publish"
