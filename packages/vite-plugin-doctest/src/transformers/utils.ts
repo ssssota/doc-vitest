@@ -24,14 +24,6 @@ export const vitestExports = [
 	"vitest",
 ];
 
-export function extractTestComment(jsDoc: string): string[] {
-	const testTagMatcher = /^import\.meta\.vitest\b/;
-	if (!jsDoc.startsWith("*")) return [];
-	const tags = jsDoc.replace(/^[ \t]*\*[ \t]*/gm, "").split(/\n@/g).slice(1);
-	const testTags = tags.filter((tag) => tag.match(testTagMatcher));
-	return testTags.map((tagComment) => tagComment.replace(testTagMatcher, ""));
-}
-
 type TestCode = {
 	name?: string;
 	code: string;
