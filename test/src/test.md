@@ -40,7 +40,7 @@ You can also import external files via dynamic import.
 <!-- @import.meta.vitest -->
 ```js
 const { add } = await import("./add");
-assert(add(1, 2) === 34);
+assert(add(1, 2) === 3);
 ```
 
 ## Constraints
