@@ -39,7 +39,7 @@
 		"vitest": ">=0.29.0"
 	},
 	"devDependencies": {
-		"remark-parse": "^10.0.2",
+		"remark-parse": "^11.0.0",
 		"tsup": "^8.0.0",
 		"unified": "^10.1.2",
 		"vite": "^5.0.0",
