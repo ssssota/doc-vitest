@@ -4,7 +4,7 @@ description: Setup environment for the project
 inputs:
   node-version:
     description: Node.js version
-    default: latest
+    default: lts/*
 
 runs:
   using: 'composite'
