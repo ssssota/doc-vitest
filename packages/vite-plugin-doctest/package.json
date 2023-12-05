@@ -43,7 +43,7 @@
 		"tsup": "^8.0.1",
 		"unified": "^11.0.4",
 		"vite": "^5.0.2",
-		"vitest": "^0.34.6"
+		"vitest": "^1.0.0"
 	},
 	"dependencies": {
 		"magic-string": "^0.30.3",
