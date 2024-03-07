@@ -43,7 +43,10 @@ function findJSDoc(node: typescript.Node): typescript.JSDoc[] {
 			...node.jsDoc.flatMap((doc) => (typescript.isJSDoc(doc) ? [doc] : [])),
 		);
 	}
-	node.forEachChild((child) => nodes.push(...findJSDoc(child)));
+	node.forEachChild(
+		(child) => nodes.push(...findJSDoc(child)),
+		(children) => nodes.push(...children.flatMap((child) => findJSDoc(child))),
+	);
 	return nodes;
 }
 
