@@ -1,5 +1,11 @@
 # vite-plugin-doctest
 
+## 0.1.3
+
+### Patch Changes
+
+- [#59](https://github.com/ssssota/doc-vitest/pull/59) [`cd0b935`](https://github.com/ssssota/doc-vitest/commit/cd0b935e8201c65ef18ad65fd7b2f0e98c47c32d) Thanks [@ssssota](https://github.com/ssssota)! - Fix behavior for multiple class members
+
 ## 0.1.2
 
 ### Patch Changes
