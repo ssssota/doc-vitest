@@ -1,7 +1,7 @@
 import type { Plugin } from "vite";
 import { markdown, typescript } from "./transformers";
 
-type Options = {};
+type Options = Record<string, unknown>;
 export const doctest = (_options: Options = {}): Plugin => {
 	return {
 		name: "vite-plugin-doctest",
