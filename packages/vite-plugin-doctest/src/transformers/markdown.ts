@@ -1,7 +1,7 @@
 import MagicString from "magic-string";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
-import { EsbuildTransformOptions, transformWithEsbuild } from "vite";
+import { type EsbuildTransformOptions, transformWithEsbuild } from "vite";
 import { vitestExports } from "./utils";
 
 export const transform = async (code: string, id: string) => {

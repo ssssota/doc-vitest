@@ -11,9 +11,7 @@
 			"default": "./dist/index.js"
 		}
 	},
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"keywords": [
 		"vite",
 		"plugin",
