@@ -30,14 +30,14 @@ type TestCode = {
 };
 
 export function extractCode(md: string): TestCode[] {
-	const matched = md.match(/```.*?\n.+?\n```/gs);
+	const matched = md.match(/```.+?\n.+?\n```/gs);
 	if (matched == null) return [];
-	return matched.map((suggestion) => {
-		const matched = suggestion.match(/```(.*?)\n(.+?)\n```/s) ?? [];
+	return matched.flatMap((suggestion) => {
+		const matched = suggestion.match(/```(.+?)\n(.+?)\n```/s) ?? [];
 		const [, lang, code] = matched;
 		if (!code) throw new Error("Unexpected blank code block");
-		if (lang == null) return { code };
-		const name = lang.split(":")[1]?.trim();
+		if (lang == null || !lang.includes("@import.meta.vitest")) return [];
+		const name = lang.split(":", 2)[1]?.trim();
 		return { name, code };
 	});
 }

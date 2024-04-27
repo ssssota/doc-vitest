@@ -2,10 +2,9 @@
 
 ## @import.meta.vitest
 
-`@import.meta.vitest` is a special comment that will be tested.
+`@import.meta.vitest` is a special marker that will be tested.
 
-<!-- @import.meta.vitest -->
-```js
+```js @import.meta.vitest
 const add = (a, b) => a + b;
 assert(add(1, 2) === 3);
 assert(add(0, 0) === 0);
@@ -27,8 +26,7 @@ The plugin supports the following languages:
 - JavaScript (includes js,jsx)
 - TypeScript (includes ts,tsx)
 
-<!-- @import.meta.vitest -->
-```ts
+```ts:add@import.meta.vitest
 const add = (a: number, b: number) => a + b;
 expect(add(1, 2)).toBe(3);
 ```
@@ -37,13 +35,11 @@ expect(add(1, 2)).toBe(3);
 
 You can also import external files via dynamic import.
 
-<!-- @import.meta.vitest -->
-```js
+```js @import.meta.vitest
 const { add } = await import("./add");
 assert(add(1, 2) === 3);
 ```
 
 ## Constraints
 
-<!-- @import.meta.vitest -->
 `inline code` is not supported.
