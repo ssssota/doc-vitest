@@ -1,6 +1,6 @@
 /**
- * @import.meta.vitest
- * ```ts
+ * @example
+ * ```ts:test@import.meta.vitest
  * expect(mul(2, 3)).toBe(6);
  * ```
  */

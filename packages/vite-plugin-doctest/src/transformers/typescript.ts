@@ -51,21 +51,16 @@ function findJSDoc(node: typescript.Node): typescript.JSDoc[] {
 }
 
 function extractTestComment(jsDoc: typescript.JSDoc): string[] {
-	return (
-		jsDoc.tags?.flatMap((tag) => {
-			if (tag.comment == null) return [];
-			const commentText =
-				typeof tag.comment === "string"
-					? tag.comment
-					: tag.comment.map((c) => c.text).join("\n");
-			// tagName should be `import.meta.vitest`. But it splits into `import` and `.meta.vitest`.
-			if (
-				tag.tagName.text === "import" &&
-				commentText.startsWith(".meta.vitest")
-			) {
-				return [commentText];
-			}
-			return [];
-		}) ?? []
-	);
+	if (jsDoc.tags == null) return [];
+	return jsDoc.tags.flatMap((tag) => {
+		if (tag.comment == null) return [];
+		const commentText =
+			typeof tag.comment === "string"
+				? tag.comment
+				: tag.comment.map((c) => c.text).join("\n");
+		if (tag.tagName.text === "example") {
+			return [commentText];
+		}
+		return [];
+	});
 }

@@ -7,8 +7,8 @@ You can write test in your source code with documentation.
 
 ```ts
 /**
- * @import.meta.vitest
- * ```ts
+ * @example
+ * ```ts @import.meta.vitest
  * expect(add(1, 2)).toBe(3);
  * assert(add(3, 4) === 7);
  * ```
@@ -23,8 +23,7 @@ You can also test code in markdown.
 ````markdown
 # Test
 
-<!-- @import.meta.vitest -->
-```ts
+```ts:filename.ts@import.meta.vitest
 const { add } = await import('./add');
 expect(add(1, 2)).toBe(3);
 ```
@@ -42,7 +41,12 @@ import { defineConfig } from 'vitest/config'; // or `import { defineConfig } fro
 import { doctest } from 'vite-plugin-doctest';
 export default defineConfig({
   plugins: [doctest({ /* options */ })],
-  test: { includeSource: ['./src/**/*.[jt]s?(x)', './**/*.md'] },
+  test: {
+    includeSource: [
+      './src/**/*.[jt]s?(x)',
+      './**/*.md', // You can disable markdown test by removing this line
+    ],
+  },
 });
 ```
 
@@ -67,8 +71,8 @@ So, you don't need to worry about the performance of your production code.
 
 ```ts
 /**
- * @import.meta.vitest
- * ```ts
+ * @example
+ * ```ts @import.meta.vitest
  * expect(add(1, 2)).toBe(3);
  * ```
  */
@@ -81,8 +85,8 @@ export function add(a: number, b: number) {
 
 ```ts
 /**
- * @import.meta.vitest
- * ```ts:1+2=3
+ * @example
+ * ```ts @import.meta.vitest
  * expect(add(1, 2)).toBe(3);
  * ```
  */

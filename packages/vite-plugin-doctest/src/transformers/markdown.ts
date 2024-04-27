@@ -10,18 +10,15 @@ export const transform = async (code: string, id: string) => {
 
 	let testCount = 0;
 	const tests = await Promise.all(
-		ast.children.map(async (node, i, arr) => {
+		ast.children.map(async (node) => {
 			// skip if not code block
-			if (node.type !== "code") return;
-			const [lang, name] = (node.lang || "ts").split(":", 2);
-			const prevNode = arr[i - 1];
-			// skip if not test target
 			if (
-				!lang.match(/^([jt]sx?|javascript|typescript)$/i) ||
-				prevNode?.type !== "html" ||
-				!prevNode.value.match(/^<!--\s*@import.meta.vitest\s*-->$/)
+				node.type !== "code" ||
+				(!node.meta?.includes("@import.meta.vitest") &&
+					!node.lang?.includes("@import.meta.vitest"))
 			)
 				return;
+			const [lang, name] = (node.lang || "ts").split(":", 2);
 			const testNumber = testCount++;
 			const transformResult = await transformWithEsbuild(
 				node.value,

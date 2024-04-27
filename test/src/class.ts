@@ -3,8 +3,8 @@ export class Foo {
 	private readonly bar: number = 3;
 
 	/**
-	 * @import.meta.vitest
-	 * ```ts
+	 * @example
+	 * ```ts @import.meta.vitest
 	 * assert(true);
 	 * ```
 	 */

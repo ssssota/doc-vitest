@@ -1,6 +1,6 @@
 /**
- * @import.meta.vitest
- * ```ts
+ * @example
+ * ```ts @import.meta.vitest
  * assert(add(1, 2) === 3);
  * ```
  */
