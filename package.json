@@ -7,7 +7,8 @@
 		"check": "pnpm -r run check && biome ci .",
 		"build": "pnpm -r run build",
 		"changeset": "changeset",
-		"release": "pnpm build && changeset publish"
+		"release": "pnpm build && changeset publish",
+		"bump": "changeset version && pnpm fmt"
 	},
 	"repository": {
 		"type": "git",
