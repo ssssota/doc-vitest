@@ -1,5 +1,11 @@
 # vite-plugin-doctest
 
+## 1.0.0
+
+### Major Changes
+
+- [#69](https://github.com/ssssota/doc-vitest/pull/69) [`aadc3e6`](https://github.com/ssssota/doc-vitest/commit/aadc3e6191e667e6521219e693e95a801bef584b) Thanks [@ssssota](https://github.com/ssssota)! - Use `@example` tag instead of `@import.meta.vitest`
+
 ## 0.1.3
 
 ### Patch Changes
