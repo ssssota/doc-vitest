@@ -19,26 +19,25 @@ importers:
         version: 2.27.9
 
   packages/vite-plugin-doctest:
-    dependencies:
+    devDependencies:
       magic-string:
         specifier: ^0.30.12
         version: 0.30.12
-      typescript:
-        specifier: ^5.6.3
-        version: 5.6.3
-      vite:
-        specifier: ^5.4.10
-        version: 5.4.10
-    devDependencies:
       remark-parse:
         specifier: ^11.0.0
         version: 11.0.0
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)
+      typescript:
+        specifier: ^5.6.3
+        version: 5.6.3
       unified:
         specifier: ^11.0.5
         version: 11.0.5
+      vite:
+        specifier: ^5.0.2
+        version: 5.4.10
       vitest:
         specifier: ^2.0.0
         version: 2.1.4
