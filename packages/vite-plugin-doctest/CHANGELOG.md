@@ -1,5 +1,11 @@
 # vite-plugin-doctest
 
+## 1.1.0
+
+### Minor Changes
+
+- [#92](https://github.com/ssssota/doc-vitest/pull/92) [`1e1d1a3`](https://github.com/ssssota/doc-vitest/commit/1e1d1a3bfab139ce8bdc7a050ca246044502a103) Thanks [@ssssota](https://github.com/ssssota)! - Make ESM package
+
 ## 1.0.0
 
 ### Major Changes
