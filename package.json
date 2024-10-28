@@ -1,10 +1,9 @@
 {
-	"packageManager": "pnpm@9.0.6",
+	"packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
 	"scripts": {
 		"test": "pnpm -r test",
-		"fmt": "biome format --write . && biome lint --apply .",
-		"lint": "biome lint .",
-		"check": "pnpm -r run check && biome ci .",
+		"fmt": "biome check --write .",
+		"check": "pnpm -r run check && biome check .",
 		"build": "pnpm -r run build",
 		"changeset": "changeset",
 		"release": "pnpm build && changeset publish",
@@ -21,9 +20,9 @@
 	},
 	"homepage": "https://github.com/ssssota/doc-vitest#readme",
 	"devDependencies": {
-		"@biomejs/biome": "^1.1.2",
+		"@biomejs/biome": "^1.9.4",
 		"@changesets/changelog-github": "^0.5.0",
-		"@changesets/cli": "^2.26.2"
+		"@changesets/cli": "^2.27.9"
 	},
 	"name": "doc-vitest",
 	"version": "1.0.0",
