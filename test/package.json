@@ -1,13 +1,13 @@
 {
 	"name": "test",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"test": "vitest run",
 		"vitest": "vitest --ui",
 		"inspect": "serve .vite-inspect"
 	},
 	"devDependencies": {
-		"@vitest/ui": "^0.34.7",
 		"serve": "^14.2.4",
 		"vite-plugin-doctest": "workspace:*",
 		"vite-plugin-inspect": "^0.7.42",
