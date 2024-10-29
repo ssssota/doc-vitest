@@ -13,6 +13,6 @@
 		}
 	},
 	"files": {
-		"ignore": ["dist/**/*", ".vite-inspect/**/*"]
+		"ignore": ["dist/**/*", ".vite-inspect/**/*", "test/test-results.json"]
 	}
 }
