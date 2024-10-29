@@ -1,5 +1,11 @@
 # vite-plugin-doctest
 
+## 1.1.1
+
+### Patch Changes
+
+- [#95](https://github.com/ssssota/doc-vitest/pull/95) [`dbd29fb`](https://github.com/ssssota/doc-vitest/commit/dbd29fbba2c505c8ab4dbff2bd4e6cff3cca7afc) Thanks [@ssssota](https://github.com/ssssota)! - Fix unexpected skip testing
+
 ## 1.1.0
 
 ### Minor Changes
