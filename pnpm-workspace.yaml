@@ -1,3 +1,6 @@
 packages:
   - 'packages/*'
   - 'test'
+
+catalog:
+  vitest: '^2.0.0'

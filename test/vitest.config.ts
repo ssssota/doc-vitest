@@ -6,5 +6,7 @@ export default defineConfig({
 	plugins: [Inspect({ build: true, outputDir: ".vite-inspect" }), doctest()],
 	test: {
 		includeSource: ["./src/**/*.[jt]s", "./src/**/*.md"],
+		reporters: ["json"],
+		outputFile: { json: "test-results.json" },
 	},
 });
