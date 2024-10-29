@@ -3,7 +3,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"test": "vitest run",
+		"test": "node test.js",
 		"vitest": "vitest --ui",
 		"inspect": "serve .vite-inspect"
 	},
@@ -11,6 +11,6 @@
 		"serve": "^14.2.4",
 		"vite-plugin-doctest": "workspace:*",
 		"vite-plugin-inspect": "^0.7.42",
-		"vitest": "^2.1.4"
+		"vitest": "catalog:"
 	}
 }

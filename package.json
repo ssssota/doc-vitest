@@ -1,5 +1,5 @@
 {
-	"packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
+	"type": "module",
 	"scripts": {
 		"test": "pnpm -r test",
 		"fmt": "biome check --write .",
@@ -14,7 +14,7 @@
 		"url": "git+https://github.com/ssssota/doc-vitest.git"
 	},
 	"author": "TOMIKAWA Sotaro <tommysouta@gmail.com>",
-	"license": "Apache-2.0",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/ssssota/doc-vitest/issues"
 	},
@@ -24,12 +24,5 @@
 		"@changesets/changelog-github": "^0.5.0",
 		"@changesets/cli": "^2.27.9"
 	},
-	"name": "doc-vitest",
-	"version": "1.0.0",
-	"main": "index.js",
-	"directories": {
-		"test": "test"
-	},
-	"keywords": [],
-	"description": ""
+	"packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
 }
