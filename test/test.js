@@ -6,12 +6,12 @@ import * as process from "node:process";
 run();
 
 async function run() {
-	await runVitest().catch(() => {});
+	await runVitest().catch(console.error);
 	const results = await loadTestResults();
 
-	assert(results.numTotalTests === 7);
-	assert(results.numPassedTests === 7);
-	assert(results.numFailedTests === 0);
+	assert(results.numTotalTests === 7, 'Incorrect number of total tests');
+	assert(results.numPassedTests === 7, 'Incorrect number of passed tests');
+	assert(results.numFailedTests === 0, 'Incorrect number of failed tests');
 }
 
 function runVitest() {
@@ -19,6 +19,7 @@ function runVitest() {
 		const p = spawn("npx", ["vitest", "run"], {
 			stdio: "inherit",
 			cwd: process.cwd(),
+			shell: true,
 		});
 		p.once("close", resolve);
 		p.once("error", reject);
