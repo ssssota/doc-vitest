@@ -1,7 +1,6 @@
 import MagicString from "magic-string";
 import typescript from "typescript";
 import { extractCode, vitestExports } from "./utils";
-
 export function transform(code: string, id: string) {
 	const node = typescript.createSourceFile(
 		id,
@@ -43,10 +42,9 @@ function findJSDoc(node: typescript.Node): typescript.JSDoc[] {
 			...node.jsDoc.flatMap((doc) => (typescript.isJSDoc(doc) ? [doc] : [])),
 		);
 	}
-	node.forEachChild(
-		(child) => nodes.push(...findJSDoc(child)),
-		(children) => nodes.push(...children.flatMap((child) => findJSDoc(child))),
-	);
+	node.forEachChild((child) => {
+		nodes.push(...findJSDoc(child));
+	});
 	return nodes;
 }
 

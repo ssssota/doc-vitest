@@ -23,7 +23,8 @@
 	],
 	"scripts": {
 		"build": "tsup src/index.ts --format esm --dts",
-		"check": "tsc --noEmit"
+		"check": "tsc --noEmit",
+		"test": "vitest run"
 	},
 	"repository": {
 		"type": "git",
