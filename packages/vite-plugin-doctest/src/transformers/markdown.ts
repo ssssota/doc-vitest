@@ -1,8 +1,10 @@
 import MagicString from "magic-string";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
-import { type EsbuildTransformOptions, transformWithEsbuild } from "vite";
+import { transformWithOxc } from "vite";
 import { vitestExports } from "./utils";
+
+type OxcTransformOptions = NonNullable<Parameters<typeof transformWithOxc>[2]>;
 
 export const transform = async (code: string, id: string) => {
 	const ast = unified().use(remarkParse).parse(code);
@@ -20,10 +22,10 @@ export const transform = async (code: string, id: string) => {
 				return;
 			const [lang, name] = (node.lang || "ts").split(":", 2);
 			const testNumber = testCount++;
-			const transformResult = await transformWithEsbuild(
+			const transformResult = await transformWithOxc(
 				node.value,
 				`${id}?${testNumber}`,
-				{ loader: getLoaderFromLang(lang) },
+				{ lang: getLoaderFromLang(lang) },
 			);
 			return {
 				name: name || `${id}#${testNumber}`,
@@ -75,7 +77,7 @@ const {${vitestExports.join(",")}} = import.meta.vitest;\n`);
 	};
 };
 
-function getLoaderFromLang(lang: string): EsbuildTransformOptions["loader"] {
+function getLoaderFromLang(lang: string): OxcTransformOptions["lang"] {
 	switch (lang.toLowerCase()) {
 		case "ts":
 		case "typescript":
