@@ -56,11 +56,30 @@ npx vitest
 
 ### Options
 
-Currently, there is no option.
+#### markdownSetup
+
+Declare top-level setup code for all your markdown files.
+Useful for declaring imports without having to pollute code blocks with dynamic imports.
 
 ```ts
-type Options = {}
+// vitest.config.ts or vite.config.ts (js)
+import { defineConfig } from 'vitest/config'; // or `import { defineConfig } from 'vite';`
+import { doctest } from 'vite-plugin-doctest';
+export default defineConfig({
+  plugins: [doctest({ 
+    markdownSetup: `import path from 'node:path';
+`,
+  })],
+  /* ... */
+});
 ```
+
+````markdown
+```ts:filename.ts@import.meta.vitest
+// `path` is in scope
+expect(path.extname(README.md)).toEqual('.md');
+```
+````
 
 ## How it works
 

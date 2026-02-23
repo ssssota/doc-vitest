@@ -4,7 +4,8 @@ import { unified } from "unified";
 import { type EsbuildTransformOptions, transformWithEsbuild } from "vite";
 import { vitestExports } from "./utils";
 
-export const transform = async (code: string, id: string) => {
+export const transform = async (code: string, id: string, options: { markdownSetup: string }) => {
+	const { markdownSetup } = options;
 	const ast = unified().use(remarkParse).parse(code);
 	const s = new MagicString(code);
 
@@ -65,7 +66,7 @@ export const transform = async (code: string, id: string) => {
 		s.appendLeft(getIndexOfLine(code, l), "//");
 	}
 
-	s.prepend(`\
+	s.prepend(markdownSetup + `\
 if (import.meta.vitest) {
 const {${vitestExports.join(",")}} = import.meta.vitest;\n`);
 	s.append("}");

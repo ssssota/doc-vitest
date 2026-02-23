@@ -40,6 +40,13 @@ const { add } = await import("./add");
 assert(add(1, 2) === 3);
 ```
 
+Or via a static import in the `markdownSetup` option:
+
+```js @import.meta.vitest
+// `sub` import is declared in vitest.config.ts
+assert(sub(2, 1) === 1);
+```
+
 ## Constraints
 
 `inline code` is not supported.
