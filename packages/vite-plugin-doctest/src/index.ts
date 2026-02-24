@@ -9,7 +9,10 @@ export const doctest = (options: Options = {}): PluginOption => {
 		transform(code, id) {
 			if (process.env.VITEST !== "true") return code;
 			if (id.match(/\.[cm]?[jt]sx?$/)) return typescript(code, id);
-			if (id.match(/\.md$/)) return markdown(code, id, { markdownSetup: options.markdownSetup ?? '' });
+			if (id.match(/\.md$/))
+				return markdown(code, id, {
+					markdownSetup: options.markdownSetup ?? "",
+				});
 		},
 	};
 };
