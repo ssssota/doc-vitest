@@ -1,7 +1,7 @@
 import type { PluginOption } from "vite";
 import { markdown, typescript } from "./transformers";
 
-type Options = { markdownSetup?: string };
+export type Options = { markdownSetup?: string };
 export const doctest = (options: Options = {}): PluginOption => {
 	return {
 		name: "vite-plugin-doctest",
