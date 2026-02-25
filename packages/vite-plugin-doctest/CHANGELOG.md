@@ -1,5 +1,11 @@
 # vite-plugin-doctest
 
+## 1.2.0
+
+### Minor Changes
+
+- [#112](https://github.com/ssssota/doc-vitest/pull/112) [`0ab2299`](https://github.com/ssssota/doc-vitest/commit/0ab22990e5676d4f3a331a5b9a346c95a8e89af3) Thanks [@mspiess](https://github.com/mspiess)! - Add `markdownSetup` option for providing setup code without polluting code blocks
+
 ## 1.1.1
 
 ### Patch Changes
