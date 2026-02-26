@@ -115,6 +115,7 @@ function getIndexOfLine(code: string, line: number): number {
 
 function getRangeOfLine(code: string, line: number): [number, number] {
 	const start = getIndexOfLine(code, line);
-	const end = code.indexOf("\n", start);
+	const nextLineBreak = code.indexOf("\n", start);
+	const end = nextLineBreak < 0 ? code.length : nextLineBreak;
 	return [start, end];
 }
