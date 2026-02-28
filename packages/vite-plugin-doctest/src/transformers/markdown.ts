@@ -23,7 +23,8 @@ export const transform = async (
 					!node.lang?.includes("@import.meta.vitest"))
 			)
 				return;
-			const [lang, name] = (node.lang || "ts").split(":", 2);
+			const [lang, namePart] = (node.lang || "ts").split(":", 2);
+			const name = namePart?.split("@", 1)[0];
 			const testNumber = testCount++;
 			const transformResult = await transformWithEsbuild(
 				node.value,
