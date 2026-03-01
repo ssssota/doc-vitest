@@ -38,3 +38,21 @@ expect(1 + 1).toBe(2);
     });}"
   `);
 });
+
+it("should not include @import.meta.vitest in filename", async () => {
+	const { code } = await transform(
+		`~~~ts:add.ts@import.meta.vitest
+expect(1 + 1).toBe(2);
+~~~`,
+		"add.ts",
+		{ markdownSetup: "" },
+	);
+
+	expect(code).toMatchInlineSnapshot(`
+    "if (import.meta.vitest) {
+    const {assert,chai,createExpect,expect,getRunningMode,isWatchMode,should,vi,vitest} = import.meta.vitest;
+    import.meta.vitest.test("add.ts", async () => {
+    expect(1 + 1).toBe(2);
+    });}"
+  `);
+});
