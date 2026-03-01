@@ -1,5 +1,13 @@
 # vite-plugin-doctest
 
+## 1.2.1
+
+### Patch Changes
+
+- [#124](https://github.com/ssssota/doc-vitest/pull/124) [`d0c8b3b`](https://github.com/ssssota/doc-vitest/commit/d0c8b3beebedffee2a38eb051288b3f5d9f2632d) Thanks [@mspiess](https://github.com/mspiess)! - Do not include "@import.meta.vitest" in the Markdown test name
+
+- [#121](https://github.com/ssssota/doc-vitest/pull/121) [`1c2a37e`](https://github.com/ssssota/doc-vitest/commit/1c2a37e87d4868a9bfa56ee2614bf8d454994975) Thanks [@mspiess](https://github.com/mspiess)! - Fix code generation when markdown file would end on a closing code fence without line break afterward
+
 ## 1.2.0
 
 ### Minor Changes
