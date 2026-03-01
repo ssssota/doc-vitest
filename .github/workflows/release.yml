@@ -7,16 +7,13 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-permissions:
-  contents: read # to checkout
-  id-token: write # to publish
-
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
+      id-token: write # to publish
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/setup
