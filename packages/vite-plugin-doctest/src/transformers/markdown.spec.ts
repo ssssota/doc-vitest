@@ -65,8 +65,7 @@ it("should generate testcode with text on final line", async () => {
     `~~~ts @import.meta.vitest
 expect(1 + 1).toBe(2);
 ~~~
-Extra text
-`,
+Extra text`,
     "add.ts",
     { markdownSetup: "" },
   );
