@@ -74,7 +74,7 @@ export const transform = async (
 	s.prepend(`${markdownSetup}\
 if (import.meta.vitest) {
 const {${vitestExports.join(",")}} = import.meta.vitest;\n`);
-	s.append("}");
+	s.append("\n}");
 	return {
 		code: s.toString(),
 		map: s.generateMap({ hires: true, source: id }),
