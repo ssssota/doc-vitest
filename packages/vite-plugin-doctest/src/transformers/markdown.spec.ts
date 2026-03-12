@@ -59,3 +59,25 @@ expect(1 + 1).toBe(2);
     }"
   `);
 });
+
+it("should generate testcode with text on final line", async () => {
+  const { code } = await transform(
+    `~~~ts @import.meta.vitest
+expect(1 + 1).toBe(2);
+~~~
+Extra text
+`,
+    "add.ts",
+    { markdownSetup: "" },
+  );
+
+  expect(code).toMatchInlineSnapshot(`
+    "if (import.meta.vitest) {
+    const {assert,chai,createExpect,expect,getRunningMode,isWatchMode,should,vi,vitest} = import.meta.vitest;
+    import.meta.vitest.test("add.ts#0", async () => {
+    expect(1 + 1).toBe(2);
+    });
+    //Extra text
+    }"
+  `);
+});
