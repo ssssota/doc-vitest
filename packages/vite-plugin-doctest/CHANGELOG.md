@@ -1,5 +1,11 @@
 # vite-plugin-doctest
 
+## 1.2.2
+
+### Patch Changes
+
+- [#129](https://github.com/ssssota/doc-vitest/pull/129) [`48dec2b`](https://github.com/ssssota/doc-vitest/commit/48dec2ba33d89e700839cb5c48baa520740e8901) Thanks [@simonvarey](https://github.com/simonvarey)! - Fix markdown transformation with extra lines
+
 ## 1.2.1
 
 ### Patch Changes
