@@ -29,7 +29,7 @@ export const transform = async (
 			const transformResult = await transformWithEsbuild(
 				node.value,
 				`${id}?${testNumber}`,
-				{ loader: getLoaderFromLang(lang) },
+				{ loader: getLoaderFromLang(lang), target: 'node25' },
 			);
 			return {
 				name: name || `${id}#${testNumber}`,
