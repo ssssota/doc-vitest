@@ -15,33 +15,32 @@ export const transform = async (
 
 	let testCount = 0;
 	const tests = await Promise.all(
-		ast.children.map(async (node) => {
-			// skip if not code block
-			if (
-				node.type !== "code" ||
-				(!node.meta?.includes("@import.meta.vitest") &&
-					!node.lang?.includes("@import.meta.vitest"))
+		ast.children
+			.filter((node) => node.type === "code")
+			.filter(
+				(node) =>
+					node.meta?.includes("@import.meta.vitest") ||
+					node.lang?.includes("@import.meta.vitest"),
 			)
-				return;
-			const [lang, namePart] = (node.lang || "ts").split(":", 2);
-			const name = namePart?.split("@", 1)[0];
-			const testNumber = testCount++;
-			const transformResult = await transformWithEsbuild(
-				node.value,
-				`${id}?${testNumber}`,
-				{ loader: getLoaderFromLang(lang) },
-			);
-			return {
-				name: name || `${id}#${testNumber}`,
-				code: transformResult.code,
-				position: node.position,
-			};
-		}),
+			.map(async (node) => {
+				const [lang, namePart] = (node.lang || "ts").split(":", 2);
+				const name = namePart?.split("@", 1)[0];
+				const testNumber = testCount++;
+				const transformResult = await transformWithEsbuild(
+					node.value,
+					`${id}?${testNumber}`,
+					{ loader: getLoaderFromLang(lang) },
+				);
+				return {
+					name: name || `${id}#${testNumber}`,
+					code: transformResult.code,
+					position: node.position,
+				};
+			}),
 	);
 
 	let lineCursor = 1;
 	for (const test of tests) {
-		if (!test) continue;
 		const line = test.position?.start?.line ?? lineCursor;
 		for (let l = lineCursor; l < line; l++) {
 			// comment out lines before test block
