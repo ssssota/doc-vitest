@@ -8,7 +8,7 @@ expect(1 + 1).toBe(2);
 ~~~
 `,
     "add.ts",
-    { markdownSetup: "" },
+    { markdownSetup: "", esbuildTarget: "node25" },
   );
 
   expect(code).toMatchInlineSnapshot(`
@@ -28,7 +28,7 @@ it("should generate testcode when file ends with closing code fence", async () =
 expect(1 + 1).toBe(2);
 ~~~`,
     "add.ts",
-    { markdownSetup: "" },
+    { markdownSetup: "", esbuildTarget: "node25" },
   );
 
   expect(code).toMatchInlineSnapshot(`
@@ -47,7 +47,7 @@ it("should not include @import.meta.vitest in filename", async () => {
 expect(1 + 1).toBe(2);
 ~~~`,
     "add.ts",
-    { markdownSetup: "" },
+    { markdownSetup: "", esbuildTarget: "node25" },
   );
 
   expect(code).toMatchInlineSnapshot(`
@@ -67,7 +67,7 @@ expect(1 + 1).toBe(2);
 ~~~
 Extra text`,
     "add.ts",
-    { markdownSetup: "" },
+    { markdownSetup: "", esbuildTarget: "node25" },
   );
 
   expect(code).toMatchInlineSnapshot(`
@@ -99,7 +99,7 @@ const p = new Person("Ray");
 expect(p.greet()).toBe('Hello, my name is Ray');
 ~~~`,
     "greet.ts",
-    { markdownSetup: "" },
+    { markdownSetup: "", esbuildTarget: "node25" },
   );
 
   expect(code).toMatchInlineSnapshot(`

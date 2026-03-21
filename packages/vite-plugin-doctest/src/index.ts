@@ -1,7 +1,7 @@
-import type { PluginOption } from "vite";
+import type { PluginOption, EsbuildTransformOptions } from "vite";
 import { markdown, typescript } from "./transformers";
 
-export type Options = { markdownSetup?: string };
+export type Options = { markdownSetup?: string, esbuildTarget?: EsbuildTransformOptions["target"] };
 export const doctest = (options: Options = {}): PluginOption => {
 	return {
 		name: "vite-plugin-doctest",
@@ -12,6 +12,7 @@ export const doctest = (options: Options = {}): PluginOption => {
 			if (id.match(/\.md$/))
 				return markdown(code, id, {
 					markdownSetup: options.markdownSetup ?? "",
+					esbuildTarget: options.esbuildTarget ?? "node25"
 				});
 		},
 	};
