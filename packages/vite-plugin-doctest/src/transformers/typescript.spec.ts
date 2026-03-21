@@ -151,4 +151,69 @@ class Hoge {
 		});
 		}"
 	`);
+
+	expect(
+		getCode(
+			transform(
+				`
+/**
+ * @example
+ * \`\`\`ts @import.meta.vitest
+ * const hoge = new Hoge();
+ * assert(hoge instanceof Hoge);
+ * \`\`\`
+ */
+class Hoge {
+	internal = 1;
+  /**
+   * @example
+   * \`\`\`ts @import.meta.vitest
+   * const hoge = new Hoge();
+   * expect(hoge.add(1)).toBe(2);
+   * expect(hoge.add(2)).toBe(4);
+   * \`\`\`
+	@loggedMethod
+  add(num) {
+    return this.internal += num;
+  }
+}`,
+				"class.js",
+			),
+		),
+	).toMatchInlineSnapshot(`
+		"
+		/**
+		 * @example
+		 * \`\`\`ts @import.meta.vitest
+		 * const hoge = new Hoge();
+		 * assert(hoge instanceof Hoge);
+		 * \`\`\`
+		 */
+		class Hoge {
+			internal = 1;
+		  /**
+		   * @example
+		   * \`\`\`ts @import.meta.vitest
+		   * const hoge = new Hoge();
+		   * expect(hoge.add(1)).toBe(2);
+		   * expect(hoge.add(2)).toBe(4);
+		   * \`\`\`
+			@loggedMethod
+		  add(num) {
+		    return this.internal += num;
+		  }
+		}
+		if (import.meta.vitest) {
+		const {assert,chai,createExpect,expect,getRunningMode,isWatchMode,should,vi,vitest} = import.meta.vitest;
+		import.meta.vitest.test("class.js#0", async () => {
+		const hoge = new Hoge();
+		assert(hoge instanceof Hoge);
+		});
+		import.meta.vitest.test("class.js#1", async () => {
+		const hoge = new Hoge();
+		expect(hoge.add(1)).toBe(2);
+		expect(hoge.add(2)).toBe(4);
+		});
+		}"
+	`);
 });

@@ -7,9 +7,9 @@ import { vitestExports } from "./utils";
 export const transform = async (
 	code: string,
 	id: string,
-	options: { markdownSetup: string },
+	options: { markdownSetup: string, esbuildTarget: EsbuildTransformOptions["target"] },
 ) => {
-	const { markdownSetup } = options;
+	const { markdownSetup, esbuildTarget } = options;
 	const ast = unified().use(remarkParse).parse(code);
 	const s = new MagicString(code);
 
@@ -29,7 +29,7 @@ export const transform = async (
 			const transformResult = await transformWithEsbuild(
 				node.value,
 				`${id}?${testNumber}`,
-				{ loader: getLoaderFromLang(lang) },
+				{ loader: getLoaderFromLang(lang), target: esbuildTarget },
 			);
 			return {
 				name: name || `${id}#${testNumber}`,
