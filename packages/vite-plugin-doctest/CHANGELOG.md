@@ -1,5 +1,13 @@
 # vite-plugin-doctest
 
+## 2.0.0
+
+### Major Changes
+
+- [#134](https://github.com/ssssota/doc-vitest/pull/134) [`f2ea9a3`](https://github.com/ssssota/doc-vitest/commit/f2ea9a32156e2c0e88b02416f0d2fadcc012757f) Thanks [@mspiess](https://github.com/mspiess)! - Update minimum version of peer dependencies vite and vitest
+
+  Vite >=6 and Vitest >=4 are now required.
+
 ## 1.2.2
 
 ### Patch Changes
