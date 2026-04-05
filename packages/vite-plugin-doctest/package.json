@@ -42,6 +42,8 @@
 		"typescript": ">=4.0.0"
 	},
 	"devDependencies": {
+		"@vitest/coverage-v8": "catalog:",
+		"@vitest/ui": "catalog:",
 		"remark-parse": "^11.0.0",
 		"tsup": "^8.3.5",
 		"unified": "^11.0.5",
