@@ -43,7 +43,7 @@
 	},
 	"devDependencies": {
 		"remark-parse": "^11.0.0",
-		"tsup": "^8.3.5",
+		"tsup": "^8.5.1",
 		"unified": "^11.0.5",
 		"vite": "catalog:",
 		"vitest": "catalog:",
