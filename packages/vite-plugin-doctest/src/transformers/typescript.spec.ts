@@ -1,5 +1,6 @@
 import { expect, it } from "vitest";
 import { transform } from "./typescript";
+
 const getCode = (maybeCode: string | { code: string }) =>
 	typeof maybeCode === "string" ? maybeCode : maybeCode.code;
 it("should generate test code", () => {

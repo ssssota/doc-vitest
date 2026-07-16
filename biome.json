@@ -1,18 +1,21 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.1.2/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"formatter": {
 		"enabled": true
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"preset": "recommended"
 		}
 	},
 	"files": {
-		"ignore": ["dist/**/*", ".vite-inspect/**/*", "test/test-results.json"]
+		"includes": [
+			"**",
+			"!**/dist/**/*",
+			"!**/.vite-inspect/**/*",
+			"!**/test/test-results.json"
+		]
 	}
 }
