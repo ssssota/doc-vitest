@@ -37,17 +37,18 @@
 	},
 	"homepage": "https://github.com/ssssota/doc-vitest#readme",
 	"peerDependencies": {
-		"vitest": ">=4.1.0",
+		"typescript": ">=5.0.0",
 		"vite": ">=8.0.0",
-		"typescript": ">=5.0.0"
+		"vitest": ">=4.1.0"
 	},
 	"devDependencies": {
+		"@types/node": "^26.1.1",
+		"magic-string": "^0.30.12",
 		"remark-parse": "^11.0.0",
 		"tsup": "^8.5.1",
+		"typescript": "^5.6.3",
 		"unified": "^11.0.5",
 		"vite": "catalog:",
-		"vitest": "catalog:",
-		"magic-string": "^0.30.12",
-		"typescript": "^5.6.3"
+		"vitest": "catalog:"
 	}
 }

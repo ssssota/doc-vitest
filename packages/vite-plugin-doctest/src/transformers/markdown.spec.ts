@@ -8,7 +8,7 @@ expect(1 + 1).toBe(2);
 ~~~
 `,
 		"add.ts",
-		{ markdownSetup: "" },
+		{ preamble: "" },
 	);
 
 	expect(code).toMatchInlineSnapshot(`
@@ -17,7 +17,7 @@ expect(1 + 1).toBe(2);
     import.meta.vitest.test("add.ts#0", async () => {
     expect(1 + 1).toBe(2);
     });
-    
+
     }"
   `);
 });
@@ -28,7 +28,7 @@ it("should generate testcode when file ends with closing code fence", async () =
 expect(1 + 1).toBe(2);
 ~~~`,
 		"add.ts",
-		{ markdownSetup: "" },
+		{ preamble: "" },
 	);
 
 	expect(code).toMatchInlineSnapshot(`
@@ -47,7 +47,7 @@ it("should not include @import.meta.vitest in filename", async () => {
 expect(1 + 1).toBe(2);
 ~~~`,
 		"add.ts",
-		{ markdownSetup: "" },
+		{ preamble: "" },
 	);
 
 	expect(code).toMatchInlineSnapshot(`
@@ -67,7 +67,7 @@ expect(1 + 1).toBe(2);
 ~~~
 Extra text`,
 		"add.ts",
-		{ markdownSetup: "" },
+		{ preamble: "" },
 	);
 
 	expect(code).toMatchInlineSnapshot(`

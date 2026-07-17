@@ -5,13 +5,16 @@ import { transformWithOxc } from "vite";
 import { vitestExports } from "./utils";
 
 type OxcTransformOptions = NonNullable<Parameters<typeof transformWithOxc>[2]>;
+export type MarkdownTransformOptions = {
+	preamble?: string;
+};
 
 export const transform = async (
 	code: string,
 	id: string,
-	options: { markdownSetup: string },
+	options: MarkdownTransformOptions = {},
 ) => {
-	const { markdownSetup } = options;
+	const { preamble = "" } = options;
 	const ast = unified().use(remarkParse).parse(code);
 	const s = new MagicString(code);
 
@@ -72,7 +75,7 @@ export const transform = async (
 		s.appendLeft(getIndexOfLine(code, l), "//");
 	}
 
-	s.prepend(`${markdownSetup}\
+	s.prepend(`${preamble}\
 if (import.meta.vitest) {
 const {${vitestExports.join(",")}} = import.meta.vitest;\n`);
 	s.append("\n}");

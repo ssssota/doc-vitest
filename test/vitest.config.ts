@@ -5,7 +5,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
 	plugins: [
 		Inspect({ build: true, outputDir: ".vite-inspect" }),
-		doctest({ markdownSetup: 'import { sub } from "./sub";\n' }),
+		doctest({ markdown: { preamble: 'import { sub } from "./sub";\n' } }),
 	],
 	test: {
 		includeSource: ["./src/**/*.[jt]s", "./src/**/*.md"],
