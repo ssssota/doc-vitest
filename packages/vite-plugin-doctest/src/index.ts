@@ -1,6 +1,6 @@
 import type { PluginOption } from "vite";
-import { markdown, typescript } from "./transformers";
 import type { MarkdownTransformOptions } from "./transformers";
+import { markdown, typescript } from "./transformers";
 
 export type Options = {
 	markdown?: MarkdownTransformOptions;
