@@ -1,5 +1,25 @@
 # vite-plugin-doctest
 
+## 3.0.0
+
+### Major Changes
+
+- [#111](https://github.com/ssssota/doc-vitest/pull/111) [`6a2ec33`](https://github.com/ssssota/doc-vitest/commit/6a2ec3351b0c91aa5751964325ae6c770f21a93e) Thanks [@mspiess](https://github.com/mspiess)! - Update minimum version of all peer dependencies:
+
+  - Version of `vite` must be 8.0.0 or later
+  - Version of `vitest` must be 4.1.0 or later
+  - Version of `typescript` must be 5.0.0 or later
+
+- [#154](https://github.com/ssssota/doc-vitest/pull/154) [`82f5fd2`](https://github.com/ssssota/doc-vitest/commit/82f5fd2e1a6a57773f7da3d4c6a5e7742e85e572) Thanks [@ssssota](https://github.com/ssssota)! - **Breaking:** Replace `markdownSetup` with `markdown.preamble`.
+
+  ```ts
+  // Before
+  doctest({ markdownSetup: 'import path from "node:path";\n' });
+
+  // After
+  doctest({ markdown: { preamble: 'import path from "node:path";\n' } });
+  ```
+
 ## 2.0.0
 
 ### Major Changes
