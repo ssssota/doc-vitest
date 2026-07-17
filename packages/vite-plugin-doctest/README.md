@@ -56,9 +56,9 @@ npx vitest
 
 ### Options
 
-#### markdownSetup
+#### markdown.preamble
 
-Declare top-level setup code for all your markdown files.
+Declare top-level preamble code for all your markdown files.
 Useful for declaring imports without having to pollute code blocks with dynamic imports.
 
 ```ts
@@ -66,9 +66,11 @@ Useful for declaring imports without having to pollute code blocks with dynamic 
 import { defineConfig } from 'vitest/config'; // or `import { defineConfig } from 'vite';`
 import { doctest } from 'vite-plugin-doctest';
 export default defineConfig({
-  plugins: [doctest({ 
-    markdownSetup: `import path from 'node:path';
+  plugins: [doctest({
+    markdown: {
+      preamble: `import path from 'node:path';
 `,
+    },
   })],
   /* ... */
 });

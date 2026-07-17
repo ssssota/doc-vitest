@@ -1,18 +1,22 @@
 import type { PluginOption } from "vite";
+import type { MarkdownTransformOptions } from "./transformers";
 import { markdown, typescript } from "./transformers";
 
-export type Options = { markdownSetup?: string };
+export type Options = {
+	markdown?: MarkdownTransformOptions;
+};
+
 export const doctest = (options: Options = {}): PluginOption => {
 	return {
 		name: "vite-plugin-doctest",
 		enforce: "pre",
+		apply() {
+			if (process.env.VITEST === "true") return true;
+			return false;
+		},
 		transform(code, id) {
-			if (process.env.VITEST !== "true") return code;
 			if (id.match(/\.[cm]?[jt]sx?$/)) return typescript(code, id);
-			if (id.match(/\.md$/))
-				return markdown(code, id, {
-					markdownSetup: options.markdownSetup ?? "",
-				});
+			if (id.match(/\.md$/)) return markdown(code, id, options.markdown);
 		},
 	};
 };
