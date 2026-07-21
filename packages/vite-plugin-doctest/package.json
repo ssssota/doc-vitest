@@ -48,7 +48,7 @@
 		"magic-string": "^0.30.12",
 		"remark-parse": "^11.0.0",
 		"tsup": "^8.5.1",
-		"typescript": "^5.6.3",
+		"typescript": "^7.0.0",
 		"unified": "^11.0.5",
 		"vite": "catalog:",
 		"vitest": "catalog:"
