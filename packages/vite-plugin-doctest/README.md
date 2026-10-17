@@ -90,11 +90,6 @@ This plugin will transform your documentation tests.
 This transformation occurs only when you start Vitest.
 So, you don't need to worry about the performance of your production code.
 
-JavaScript and TypeScript comments are collected with [oxc-parser](https://oxc.rs/docs/guide/usage/parser),
-and JSDoc `@example` tags are parsed with [ox-jsdoc](https://github.com/kazupon/ox-jsdoc).
-The plugin does not use the TypeScript compiler's JavaScript API or require TypeScript at runtime.
-All JSDoc block comments are scanned, including standalone comments.
-
 ```ts
 /**
  * @example
@@ -132,9 +127,6 @@ expect(add(1, 2)).toBe(3);
 
 This plugin has some constraints.
 
-- The native bindings of `ox-jsdoc` 0.0.19 support macOS (ARM64/x64), Linux (x64/glibc), and Windows (x64).
-  Linux ARM64, Alpine Linux (musl), and Windows ARM64 require a different binding, such as the upstream WASM package.
-  See the [ox-jsdoc Node.js package documentation](https://github.com/kazupon/ox-jsdoc/tree/main/napi/ox-jsdoc).
 - You cannot use typechecks. (e.g. `expectTypeOf`, `assertType`, etc...)
 - You cannot use lifecycle hooks. (e.g. `beforeEach`, `afterAll`, etc...)
 - Currently you cannot use `import` statement in your test code. (You can use dynamic import)
