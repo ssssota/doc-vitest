@@ -39,10 +39,17 @@
 	},
 	"homepage": "https://github.com/ssssota/doc-vitest#readme",
 	"peerDependencies": {
+		"@ox-jsdoc/wasm": "0.0.19",
 		"vite": ">=8.0.0",
 		"vitest": ">=4.1.0"
 	},
+	"peerDependenciesMeta": {
+		"@ox-jsdoc/wasm": {
+			"optional": true
+		}
+	},
 	"devDependencies": {
+		"@ox-jsdoc/wasm": "0.0.19",
 		"@types/node": "^26.6.5",
 		"magic-string": "^1.4.3",
 		"remark-parse": "^11.0.0",

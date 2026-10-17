@@ -1,28 +1,15 @@
-import { RemoteJsdocTag, RemoteJsdocTagName } from "@ox-jsdoc/decoder";
 import MagicString from "magic-string";
-import { parseBatch } from "ox-jsdoc";
 import { parseSync } from "oxc-parser";
+import { extractExamples } from "./jsdoc";
 import { extractCode, vitestExports } from "./utils";
-export function transform(code: string, id: string) {
+export async function transform(code: string, id: string) {
 	const comments = parseSync(id, code).comments.flatMap((comment) => {
 		if (comment.type !== "Block" || !comment.value.startsWith("*")) return [];
 		return [{ sourceText: code.slice(comment.start, comment.end) }];
 	});
 	if (comments.length === 0) return code;
 
-	const jsDocs = parseBatch(comments);
-	const tests = jsDocs.asts.flatMap((jsDoc) =>
-		(jsDoc?.tags ?? []).flatMap((tag) => {
-			if (!(tag instanceof RemoteJsdocTag)) return [];
-			const name = tag.tag;
-			if (!(name instanceof RemoteJsdocTagName) || name.value !== "example") {
-				return [];
-			}
-			// descriptionText() treats the opening code fence as a tag name value.
-			// rawBody retains the complete example, including code indentation.
-			return extractCode(tag.rawBody ?? "");
-		}),
-	);
+	const tests = (await extractExamples(comments)).flatMap(extractCode);
 	if (tests.length === 0) return code;
 
 	const s = new MagicString(code);

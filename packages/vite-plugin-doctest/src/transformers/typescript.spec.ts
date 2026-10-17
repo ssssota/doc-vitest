@@ -3,10 +3,10 @@ import { transform } from "./typescript";
 
 const getCode = (maybeCode: string | { code: string }) =>
 	typeof maybeCode === "string" ? maybeCode : maybeCode.code;
-it("should generate test code", () => {
+it("should generate test code", async () => {
 	expect(
 		getCode(
-			transform(
+			await transform(
 				`
 /**
  * @example
@@ -37,7 +37,7 @@ export const add = (a: number, b: number) => a + b;`,
 
 	expect(
 		getCode(
-			transform(
+			await transform(
 				`
 /**
  * @example
@@ -92,7 +92,7 @@ export const sub = (a: number, b: number) => {
 
 	expect(
 		getCode(
-			transform(
+			await transform(
 				`
 /**
  * @example
@@ -175,16 +175,16 @@ it.each([
 	["example.cjs", "module.exports = 1;"],
 	["example.jsx", "export const value = <div />;"],
 	["example.tsx", "export const value = <div /> satisfies unknown;"],
-])("should parse documentation in %s", (id, declaration) => {
+])("should parse documentation in %s", async (id, declaration) => {
 	const source = `${example("expect(true).toBe(true);")}\n${declaration}`;
-	const result = getCode(transform(source, id));
+	const result = getCode(await transform(source, id));
 	expect(result.startsWith(source)).toBe(true);
 	expect(result.slice(source.length)).toContain(
 		`import.meta.vitest.test("${id}#0", async () => {\nexpect(true).toBe(true);\n});`,
 	);
 });
 
-it("should preserve code indentation, blank lines, and inline JSDoc links", () => {
+it("should preserve code indentation, blank lines, and inline JSDoc links", async () => {
 	const body = [
 		"const text = `first",
 		"",
@@ -195,14 +195,14 @@ it("should preserve code indentation, blank lines, and inline JSDoc links", () =
 	].join("\n");
 	const source = `${example(body)}\nexport const value = 1;`;
 	expect(
-		getCode(transform(source, "example.ts")).slice(source.length),
+		getCode(await transform(source, "example.ts")).slice(source.length),
 	).toContain(body);
 });
 
-it("should preserve Unicode before comments and in test names", () => {
+it("should preserve Unicode before comments and in test names", async () => {
 	const body = 'expect(挨拶).toBe("こんにちは😀");';
 	const source = `const 挨拶 = "こんにちは😀";\n${example(body, "ts @import.meta.vitest:日本語😀")}`;
-	const generated = getCode(transform(source, "日本語.ts")).slice(
+	const generated = getCode(await transform(source, "日本語.ts")).slice(
 		source.length,
 	);
 	expect(generated).toContain(
@@ -211,18 +211,18 @@ it("should preserve Unicode before comments and in test names", () => {
 	expect(generated).toContain(body);
 });
 
-it("should handle CRLF comments", () => {
+it("should handle CRLF comments", async () => {
 	const source =
 		`${example("expect(1).toBe(1);")}\nexport const value = 1;`.replace(
 			/\n/g,
 			"\r\n",
 		);
 	expect(
-		getCode(transform(source, "example.ts")).slice(source.length),
+		getCode(await transform(source, "example.ts")).slice(source.length),
 	).toContain("expect(1).toBe(1);");
 });
 
-it("should extract multiple examples and blocks in source order", () => {
+it("should extract multiple examples and blocks in source order", async () => {
 	const first = example("expect(1).toBe(1);", "ts @import.meta.vitest:first");
 	const second = example("expect(2).toBe(2);").replace("/**\n", "");
 	const source = [
@@ -235,7 +235,7 @@ it("should extract multiple examples and blocks in source order", () => {
 		`/**\n * @example A caption\n * \`\`\`ts @import.meta.vitest:third\n * expect(3).toBe(3);\n * \`\`\`\n${second}`,
 		"export const final = 2;",
 	].join("\n");
-	const generated = getCode(transform(source, "example.ts")).slice(
+	const generated = getCode(await transform(source, "example.ts")).slice(
 		source.length,
 	);
 	const names = [
@@ -246,11 +246,11 @@ it("should extract multiple examples and blocks in source order", () => {
 	expect(generated).toContain("expect(3).toBe(3);");
 });
 
-it("should keep lines starting with @ inside a code fence", () => {
+it("should keep lines starting with @ inside a code fence", async () => {
 	const body = "@decorate\nclass Example {}\nexpect(Example).toBeDefined();";
 	const source = `${example(body)}\nexport const decorate = () => {};`;
 	expect(
-		getCode(transform(source, "example.ts")).slice(source.length),
+		getCode(await transform(source, "example.ts")).slice(source.length),
 	).toContain(body);
 });
 
@@ -266,7 +266,7 @@ it.each([
 	String.raw`const pattern = /\/\*\* @example/;`,
 ])(
 	"should leave source without documentation tests unchanged (%#)",
-	(source) => {
-		expect(transform(source, "example.ts")).toBe(source);
+	async (source) => {
+		expect(await transform(source, "example.ts")).toBe(source);
 	},
 );
