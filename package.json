@@ -20,9 +20,9 @@
 	},
 	"homepage": "https://github.com/ssssota/doc-vitest#readme",
 	"devDependencies": {
-		"@biomejs/biome": "^2.0.0",
-		"@changesets/changelog-github": "^0.7.0",
-		"@changesets/cli": "^2.27.9"
+		"@biomejs/biome": "^2.5.15",
+		"@changesets/changelog-github": "^1.0.1",
+		"@changesets/cli": "^3.0.3"
 	},
-	"packageManager": "pnpm@11.13.1"
+	"packageManager": "pnpm@12.14.0+sha512.c18ba6d87993d3d164cb5e8948f32b2c06ee854487e06cd8d86781342fb3e5bb4634367034711e86802baa9c37bea906ce1929ad08d70884c97d801df13389a6"
 }
