@@ -24,7 +24,7 @@
 		"vitest"
 	],
 	"scripts": {
-		"build": "tsup src/index.ts --format esm --dts",
+		"build": "tsdown src/index.ts --format esm --dts",
 		"check": "tsc --noEmit",
 		"test": "vitest run"
 	},
@@ -47,7 +47,7 @@
 		"@types/node": "^26.6.5",
 		"magic-string": "^1.4.3",
 		"remark-parse": "^11.0.0",
-		"tsup": "^9.0.0",
+		"tsdown": "^0.23.1",
 		"typescript": "^7.0.2",
 		"unified": "^11.0.5",
 		"vite": "catalog:",
