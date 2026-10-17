@@ -54,6 +54,16 @@ export default defineConfig({
 npx vitest
 ```
 
+On platforms without an `ox-jsdoc` native binding, including Windows ARM64 and
+Linux ARM64, install the optional WASM peer dependency:
+
+```sh
+npm i -D @ox-jsdoc/wasm
+```
+
+The plugin uses the native parser when available and automatically falls back to
+WASM if loading it fails. No Rust toolchain or manual WASM initialization is needed.
+
 ### Options
 
 #### markdown.preamble

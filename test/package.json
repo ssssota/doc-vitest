@@ -4,6 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "node test.js",
+		"test:wasm": "node parser-wasm.js && node parser-wasm.js --without-wasm",
 		"vitest": "vitest --ui",
 		"inspect": "serve .vite-inspect"
 	},
