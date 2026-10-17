@@ -1,8 +1,8 @@
 # vite-plugin-doctest
 
-JSDocやMarkdownのコードブロックに特定のマーカーが含まれていた場合、[In-source testing](https://vitest.dev/guide/in-source.html)の形式に変換してVitestでテスト実行可能にする。
+When code blocks in JSDoc comments or Markdown contain a specific marker, the plugin converts them into the [in-source testing](https://vitest.dev/guide/in-source.html) format so they can be run as tests with Vitest.
 
-## 変換例
+## Transformation Example
 
 ````typescript
 /**
