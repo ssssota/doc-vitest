@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
+import { pathToFileURL } from "node:url";
 import { RemoteJsdocTag, RemoteJsdocTagName } from "@ox-jsdoc/decoder";
 import type { BatchItem, BatchParseResult } from "ox-jsdoc";
 
@@ -13,7 +16,13 @@ async function loadParser(): Promise<BatchParser> {
 	} catch (nativeError) {
 		try {
 			const wasm = await import("@ox-jsdoc/wasm");
-			await wasm.initWasm();
+			const require = createRequire(import.meta.url);
+			const entry = pathToFileURL(require.resolve("@ox-jsdoc/wasm"));
+			// The default initializer fetches a file: URL, which Node.js cannot load.
+			const bytes = await readFile(
+				new URL("../pkg/ox_jsdoc_wasm_bg.wasm", entry),
+			);
+			await wasm.initWasm(bytes);
 			return wasm.parseBatch;
 		} catch (wasmError) {
 			throw new Error(
