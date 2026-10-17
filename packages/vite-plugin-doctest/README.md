@@ -100,7 +100,7 @@ This plugin will transform your documentation tests.
 This transformation occurs only when you start Vitest.
 So, you don't need to worry about the performance of your production code.
 
-```ts
+````ts
 /**
  * @example
  * ```ts @import.meta.vitest
@@ -110,11 +110,11 @@ So, you don't need to worry about the performance of your production code.
 export function add(a: number, b: number) {
   return a + b;
 }
-```
+````
 
 ↓
 
-```ts
+````ts
 /**
  * @example
  * ```ts @import.meta.vitest
@@ -131,7 +131,7 @@ import.meta.vitest.test("1+2=3", async () => {
 expect(add(1, 2)).toBe(3);
 });
 }
-```
+````
 
 ### Constraints
 
