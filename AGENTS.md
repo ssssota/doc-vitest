@@ -1,5 +1,5 @@
 # doc-vitest
 
-Vitestでドキュメンテーションテストを実現するためのライブラリ群。
+A collection of libraries for documentation testing with Vitest.
 
-1. `packages/vite-plugin-doctest`: JS/TSのJSDoc、Markdownの中からコードブロックを検出し、Vitestの[In-source testing](https://vitest.dev/guide/in-source.html)の仕組みを使ってテストを実行するViteプラグイン。
+1. `packages/vite-plugin-doctest`: A Vite plugin that detects code blocks in JSDoc comments in JavaScript/TypeScript files and in Markdown, and runs them as tests using Vitest's [in-source testing](https://vitest.dev/guide/in-source.html) mechanism.
