@@ -20,7 +20,7 @@ jobs:
       - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@v2.1.2
         with:
-          publish: pnpm release
-          version: pnpm bump
+          publish-script: pnpm release
+          version-script: pnpm bump
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
