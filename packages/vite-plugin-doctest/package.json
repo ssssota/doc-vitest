@@ -28,6 +28,9 @@
 		"check": "tsc --noEmit",
 		"test": "vitest run"
 	},
+	"tsdown": {
+		"fixedExtension": false
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/ssssota/doc-vitest.git"
@@ -39,7 +42,6 @@
 	},
 	"homepage": "https://github.com/ssssota/doc-vitest#readme",
 	"peerDependencies": {
-		"typescript": ">=5.0.0",
 		"vite": ">=8.0.0",
 		"vitest": ">=4.1.0"
 	},
@@ -52,5 +54,10 @@
 		"unified": "^11.0.5",
 		"vite": "catalog:",
 		"vitest": "catalog:"
+	},
+	"dependencies": {
+		"@ox-jsdoc/decoder": "0.0.19",
+		"ox-jsdoc": "0.0.19",
+		"oxc-parser": "0.154.0"
 	}
 }

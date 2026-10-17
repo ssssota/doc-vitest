@@ -1,14 +1,28 @@
+import { RemoteJsdocTag, RemoteJsdocTagName } from "@ox-jsdoc/decoder";
 import MagicString from "magic-string";
-import typescript from "typescript";
+import { parseBatch } from "ox-jsdoc";
+import { parseSync } from "oxc-parser";
 import { extractCode, vitestExports } from "./utils";
 export function transform(code: string, id: string) {
-	const node = typescript.createSourceFile(
-		id,
-		code,
-		typescript.ScriptTarget.ESNext,
+	const comments = parseSync(id, code).comments.flatMap((comment) => {
+		if (comment.type !== "Block" || !comment.value.startsWith("*")) return [];
+		return [{ sourceText: code.slice(comment.start, comment.end) }];
+	});
+	if (comments.length === 0) return code;
+
+	const jsDocs = parseBatch(comments);
+	const tests = jsDocs.asts.flatMap((jsDoc) =>
+		(jsDoc?.tags ?? []).flatMap((tag) => {
+			if (!(tag instanceof RemoteJsdocTag)) return [];
+			const name = tag.tag;
+			if (!(name instanceof RemoteJsdocTagName) || name.value !== "example") {
+				return [];
+			}
+			// descriptionText() treats the opening code fence as a tag name value.
+			// rawBody retains the complete example, including code indentation.
+			return extractCode(tag.rawBody ?? "");
+		}),
 	);
-	const jsDocs = findJSDoc(node);
-	const tests = jsDocs.flatMap(extractTestComment).flatMap(extractCode);
 	if (tests.length === 0) return code;
 
 	const s = new MagicString(code);
@@ -32,33 +46,4 @@ export function transform(code: string, id: string) {
 		code: s.toString(),
 		map: s.generateMap({ hires: true, source: id }),
 	};
-}
-
-function findJSDoc(node: typescript.Node): typescript.JSDoc[] {
-	const nodes: typescript.JSDoc[] = [];
-	// HACK: typescript.Node has no jsDoc property
-	if ("jsDoc" in node && Array.isArray(node.jsDoc) && node.jsDoc.length > 0) {
-		nodes.push(
-			...node.jsDoc.flatMap((doc) => (typescript.isJSDoc(doc) ? [doc] : [])),
-		);
-	}
-	node.forEachChild((child) => {
-		nodes.push(...findJSDoc(child));
-	});
-	return nodes;
-}
-
-function extractTestComment(jsDoc: typescript.JSDoc): string[] {
-	if (jsDoc.tags == null) return [];
-	return jsDoc.tags.flatMap((tag) => {
-		if (tag.comment == null) return [];
-		const commentText =
-			typeof tag.comment === "string"
-				? tag.comment
-				: tag.comment.map((c) => c.text).join("\n");
-		if (tag.tagName.text === "example") {
-			return [commentText];
-		}
-		return [];
-	});
 }
