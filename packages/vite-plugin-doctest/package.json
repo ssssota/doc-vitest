@@ -62,6 +62,6 @@
 	"dependencies": {
 		"@ox-jsdoc/decoder": "0.0.19",
 		"ox-jsdoc": "0.0.19",
-		"oxc-parser": "0.154.0"
+		"oxc-parser": "0.156.0"
 	}
 }
