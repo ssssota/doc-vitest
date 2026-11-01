@@ -191,8 +191,8 @@ importers:
         specifier: 0.0.19
         version: 0.0.19
       ox-jsdoc:
-        specifier: 0.0.19
-        version: 0.0.19
+        specifier: 0.1.1
+        version: 0.1.1
       oxc-parser:
         specifier: 0.154.0
         version: 0.154.0
@@ -562,33 +562,37 @@ packages:
     resolution: {integrity: sha512-6QEf6yqFbETdwGITKq57aYoPfX/3K8XFNwsAlx0C1M7o8cb79sv1M3w+tWuWvIcSbNqrLF7OD7YpZMVVz335hQ==}
     engines: {node: '>=20.0.0'}
 
-  '@ox-jsdoc/binding-darwin-arm64@0.0.19':
-    resolution: {integrity: sha512-D8+rxpv3Gn4/URbcDlmupwbrwIHPPhdpagn6TGF7xYRS5up2F47qRlmuhzUAwXMXQdem+DX3Y/qumvXL2qPknQ==}
+  '@ox-jsdoc/binding-darwin-arm64@0.1.1':
+    resolution: {integrity: sha512-jwFZlHOjRBUvONQBoY6NaxVUfSV/8p21xfn/27qwWH7FHIRGqfwvG++Bpu5jvzn6yJeKpB/zyrZ9tnHT0Xfp2A==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [darwin]
 
-  '@ox-jsdoc/binding-darwin-x64@0.0.19':
-    resolution: {integrity: sha512-tgAkOjXmgO0K5Nbkaj+4qy7uIPCwJZ0Xbz6gVOmW6hUwqaI7poJMgD5tZRl4ybXI7zXODRzmNCtbL4T5esqqeg==}
+  '@ox-jsdoc/binding-darwin-x64@0.1.1':
+    resolution: {integrity: sha512-nZR+QjNsZ7YIRBzGR/T99HrJTfh3ITkKr3O8BYR+izCoT6fcsUw7LTpw+9Ez06uUqAijDB+S+Qkob30p9PWl5Q==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [darwin]
 
-  '@ox-jsdoc/binding-linux-x64-gnu@0.0.19':
-    resolution: {integrity: sha512-tl9HPda0h5sLdgTrG9twWeIH9i3ZH99BSSeV2MAwKNhvKNhXETqOsaagd8hv7hEwlKDlhUqX31Wi/HbrcfjiZA==}
+  '@ox-jsdoc/binding-linux-x64-gnu@0.1.1':
+    resolution: {integrity: sha512-shW8RzkJwWnbUxEwyoho569Yo7laVxLYea4vHTsWBT+Rq+l9nhp3UJirSL8Dt1Yhilz9nrNB4tYIJwLe+Vkhqw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@ox-jsdoc/binding-win32-x64-msvc@0.0.19':
-    resolution: {integrity: sha512-RAo3j9QiKMsIRu6u0kxTQ5nHHL85IwZtevOrkT6VMrxPB6ySB/+PYOD+fkNoDJtO/8owjCrgZnIzeUG4UrmcRw==}
+  '@ox-jsdoc/binding-win32-x64-msvc@0.1.1':
+    resolution: {integrity: sha512-x1Yh4vWB8IQlmGeMcgVzds9gVNO5jC0AwX5x3SisR0i3rvRl/rVphCMT6UsKL12X8/WBbrhZzp1TjYFVO4BzWw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [win32]
 
   '@ox-jsdoc/decoder@0.0.19':
     resolution: {integrity: sha512-Npp1ac1LGivgDkjYXkKdQQqMWpiD4dCqcbtvdH4DzXVlLIQqLG85RbvTVW8NcyRrhQE5YvQ3V/AWfYOhtJlfKA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+
+  '@ox-jsdoc/decoder@0.1.1':
+    resolution: {integrity: sha512-/SCD6FujjA17xeCzpiBhbAOLVDNy+z1mD3+73sy8ABW2cs5DzjHjp40jSBQsjL4663BV/NP4bZ39lUbgsaDl6A==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@ox-jsdoc/wasm@0.0.19':
@@ -1685,8 +1689,8 @@ packages:
     resolution: {integrity: sha512-smsWv2LzFjP03xmvFoJ331ss6h+jixfA4UUV/Bsiyuu4YJPfN+FIQGOIiv4w9/+MoHkfkJ22UIaQWRVFRfH6Vw==}
     engines: {node: '>=20'}
 
-  ox-jsdoc@0.0.19:
-    resolution: {integrity: sha512-+sjVUc6iJnqaAKwjSshudNcQ6hOOAxhLMAskj85KeIlfPXmhGvxpF/PlVhu4nhxizOIQgQHatWmm2Pwra3ro6A==}
+  ox-jsdoc@0.1.1:
+    resolution: {integrity: sha512-LfIep3KePnlTgrWKp9DTySHcy7jb0JfZC4Tap5DpFZJKfSQv/7QYqujw4u0XTqz5QwgGcU3g522Hq1vjApGjzA==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   oxc-parser@0.154.0:
@@ -2413,19 +2417,21 @@ snapshots:
       tinyglobby: 0.2.17
       yaml: 2.9.1
 
-  '@ox-jsdoc/binding-darwin-arm64@0.0.19':
+  '@ox-jsdoc/binding-darwin-arm64@0.1.1':
     optional: true
 
-  '@ox-jsdoc/binding-darwin-x64@0.0.19':
+  '@ox-jsdoc/binding-darwin-x64@0.1.1':
     optional: true
 
-  '@ox-jsdoc/binding-linux-x64-gnu@0.0.19':
+  '@ox-jsdoc/binding-linux-x64-gnu@0.1.1':
     optional: true
 
-  '@ox-jsdoc/binding-win32-x64-msvc@0.0.19':
+  '@ox-jsdoc/binding-win32-x64-msvc@0.1.1':
     optional: true
 
   '@ox-jsdoc/decoder@0.0.19': {}
+
+  '@ox-jsdoc/decoder@0.1.1': {}
 
   '@ox-jsdoc/wasm@0.0.19':
     dependencies:
@@ -3316,14 +3322,14 @@ snapshots:
       powershell-utils: 0.1.0
       wsl-utils: 0.3.1
 
-  ox-jsdoc@0.0.19:
+  ox-jsdoc@0.1.1:
     dependencies:
-      '@ox-jsdoc/decoder': 0.0.19
+      '@ox-jsdoc/decoder': 0.1.1
     optionalDependencies:
-      '@ox-jsdoc/binding-darwin-arm64': 0.0.19
-      '@ox-jsdoc/binding-darwin-x64': 0.0.19
-      '@ox-jsdoc/binding-linux-x64-gnu': 0.0.19
-      '@ox-jsdoc/binding-win32-x64-msvc': 0.0.19
+      '@ox-jsdoc/binding-darwin-arm64': 0.1.1
+      '@ox-jsdoc/binding-darwin-x64': 0.1.1
+      '@ox-jsdoc/binding-linux-x64-gnu': 0.1.1
+      '@ox-jsdoc/binding-win32-x64-msvc': 0.1.1
 
   oxc-parser@0.154.0:
     dependencies:
