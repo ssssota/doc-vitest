@@ -188,8 +188,8 @@ importers:
   packages/vite-plugin-doctest:
     dependencies:
       '@ox-jsdoc/decoder':
-        specifier: 0.0.19
-        version: 0.0.19
+        specifier: 0.1.1
+        version: 0.1.1
       ox-jsdoc:
         specifier: 0.0.19
         version: 0.0.19
@@ -589,6 +589,10 @@ packages:
 
   '@ox-jsdoc/decoder@0.0.19':
     resolution: {integrity: sha512-Npp1ac1LGivgDkjYXkKdQQqMWpiD4dCqcbtvdH4DzXVlLIQqLG85RbvTVW8NcyRrhQE5YvQ3V/AWfYOhtJlfKA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+
+  '@ox-jsdoc/decoder@0.1.1':
+    resolution: {integrity: sha512-/SCD6FujjA17xeCzpiBhbAOLVDNy+z1mD3+73sy8ABW2cs5DzjHjp40jSBQsjL4663BV/NP4bZ39lUbgsaDl6A==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@ox-jsdoc/wasm@0.0.19':
@@ -2426,6 +2430,8 @@ snapshots:
     optional: true
 
   '@ox-jsdoc/decoder@0.0.19': {}
+
+  '@ox-jsdoc/decoder@0.1.1': {}
 
   '@ox-jsdoc/wasm@0.0.19':
     dependencies:

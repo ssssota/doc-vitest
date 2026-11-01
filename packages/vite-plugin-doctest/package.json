@@ -60,7 +60,7 @@
 		"vitest": "catalog:"
 	},
 	"dependencies": {
-		"@ox-jsdoc/decoder": "0.0.19",
+		"@ox-jsdoc/decoder": "0.1.1",
 		"ox-jsdoc": "0.0.19",
 		"oxc-parser": "0.154.0"
 	}
